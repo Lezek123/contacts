@@ -30,6 +30,7 @@ class ContactController extends Controller
      */
     public function indexAction(Request $request, $page)
     {
+        /*
         $rep = $this->get('app.contact_rep');
         if ($request->getSession()->get('debug_mode')) {
             $pm = new PaginationManager($rep->getPaginationQB(true), $page, 10);
@@ -42,6 +43,7 @@ class ContactController extends Controller
             'maxPages' => $pm->getMaxPages(),
             'page' => $pm->getPage(),
         ));
+        */
     }
 
     /**
