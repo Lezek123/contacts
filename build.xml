@@ -287,10 +287,8 @@
             <arg path="${basedir}/phpunit.xml"/>
             <arg value="--log-junit" />
             <arg path="${basedir}/build/logs/junit.xml" />
-            <!--
-            <arg value="-coverage-crap4j" /> Add one more -
+            <arg value="--coverage-crap4j" />
             <arg path="${basedir}/build/logs/crap4j.xml" />
-            -->
         </exec>
 
         <property name="phpunit.done" value="true"/>
