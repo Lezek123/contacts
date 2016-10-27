@@ -19,7 +19,7 @@ class ContactControllerTest extends WebTestCase
         $client = static::createClient();
         $crawler = $client->request('GET', '/en/contact');
         $response = $client->getResponse();
-        /*
+        
         if (!$response->isSuccessful()) {
             $block = $crawler->filter('div.text-exception');
             if ($block->count()) {
@@ -56,6 +56,5 @@ class ContactControllerTest extends WebTestCase
 
         // Check the element contains an attribute with value equals "Foo"
         $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
-        */
     }
 }
