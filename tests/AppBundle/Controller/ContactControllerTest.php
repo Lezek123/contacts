@@ -15,6 +15,7 @@ class ContactControllerTest extends WebTestCase
      */
     public function testCompleteScenario()
     {
+        /* Getting errors, because of vendor/kriswallsmith/assetic/src/Assetic/Extension/Twig method load() passing string Twig_environment::tokenize() */
         // Create a new client to browse the application
         $client = static::createClient();
         $crawler = $client->request('GET', '/en/contact', array(), array(), array('PHP_AUTH_USER' => 'TestAdmin', 'PHP_AUTH_PW' => 'AdminPass!123'));
