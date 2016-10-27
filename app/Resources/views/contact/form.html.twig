@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}{{ ('contact.'~action~'.title')|trans }} - {{ contact.fullname }}{% endblock %}
+{% block body %}
+    <h1>{{ ('contact.'~action~'.title')|trans }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.firstname) }}
+    {{ form_row(form.lastname) }}
+    {{ debugMode ? form_row(form.isDeleted) : '' }}
+    {{ form_label(form.details) }}
+    <div id="contact_details" data-prototype="{% filter escape %}
+             {{ include('contact/detail_prototype.html.twig', { 'form': form.details.vars.prototype }) }}
+         {% endfilter %}">
+        {% for detail in form.details %}
+            {% if (not detail.vars.value.isDeleted and detail.vars.value.fieldType.isActive) or debugMode %}
+                {{ form_errors(detail) }}
+                {{ form_widget(detail, {'attr': {'class': 'detail'}}) }}
+            {% endif %}
+        {% endfor %}
+        {% do form.details.setRendered %}
+    </div>
+    <input type="submit" value="{{ action|trans }}" class="success-button">
+    {{ form_end(form) }}
+
+    <ul class="actions">
+        <li>
+            <a href="{{ path('contact_index') }}">{{ 'back.to.list'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        var $collectionHolder;
+
+        // setup an "add a tag" link
+        var $addTagLink = $('<a href="#" class="add_tag_link">{{ 'add.detail'|trans }}</a>');
+        var $newLinkDiv = $('<div></div>').append($addTagLink);
+
+        jQuery(document).ready(function() {
+            /* Display only input approperiete to type */
+
+            // Get the ul that holds the collection of tags
+            $collectionHolder = $('#contact_details');
+
+            $collectionHolder.find('.detail').each(function() {
+                addTagFormDeleteLink($(this));
+            });
+
+            // add the "add a tag" anchor and li to the tags ul
+            $collectionHolder.append($newLinkDiv);
+
+            // start indexing from last detail id + 1
+            $collectionHolder.data('index', {{ startIndexing }});
+
+            $addTagLink.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                // add a new tag form (see next code block)
+                addTagForm($collectionHolder, $newLinkDiv);
+            });
+            hideUnnecessaryInputs();
+        });
+        $('select').change(function () {
+            hideUnnecessaryInputs();
+        });
+        function addTagForm($collectionHolder, $newLinkDiv) {
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            var $newFormDiv = $(newForm);
+
+            $newLinkDiv.before($newFormDiv);
+            addTagFormDeleteLink($newFormDiv);
+            hideUnnecessaryInputs();
+            $('select').change(function () {
+                hideUnnecessaryInputs();
+            });
+        }
+
+        function addTagFormDeleteLink($tagFormDiv) {
+            var $removeFormA = $('<a href="#" class="danger-button">{{ 'remove.detail'|trans }}</a>');
+            if($tagFormDiv.find('.help-block').length) {
+                $tagFormDiv.find('.help-block').before($removeFormA);
+            } else {
+                $tagFormDiv.append($removeFormA);
+            }
+
+            $removeFormA.on('click', function(e) {
+                // prevent the link from creating a "#" on the URL
+                e.preventDefault();
+
+                $tagFormDiv.remove();
+            });
+        }
+
+        function hideUnnecessaryInputs() {
+            console.log('hideUnnecessary');
+            $('#contact_details').find('.detail').each(function () {
+                var id = this.id.replace('contact_details_', '');
+                var $thisDiv = $(this);
+                var typeName = $(this).find('select option:selected').data('type');
+                $thisDiv.find('.form-group').hide();
+                console.log('Hiding all. Showing [name="contact[details]['+id+']['+typeName+']"]');
+                $('[name="contact[details]['+id+'][fieldType]"]').parent().show();
+                {% if debugMode %}
+                    $('.checkbox').parent().show();
+                {% endif %}
+                $('[name="contact[details]['+id+']['+typeName+']"]').parent().show();
+                $thisDiv.find('.form-group:hidden').find('input, textarea').val('');
+            });
+        }
+    </script>
+{% endblock %}
+

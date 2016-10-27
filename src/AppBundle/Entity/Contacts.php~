@@ -1,0 +1,47 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Contacts
+ *
+ * @ORM\Table(name="contacts", indexes={@ORM\Index(name="IX_contacts_1", columns={"is_deleted"}), @ORM\Index(name="IX_contacts_2", columns={"firstname"}), @ORM\Index(name="IX_contacts_3", columns={"lastname"})})
+ * @ORM\Entity
+ */
+class Contacts
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=false)
+     */
+    private $isDeleted = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=128, nullable=false)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=128, nullable=true)
+     */
+    private $lastname;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+
+}
+

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+        <!-- Komunikaty -->
+        <trans-unit id="invalid.password">
+            <source>invalid.password</source>
+            <target>Invalid password! (it should have at least one big letter, small letter, digit and character)</target>
+        </trans-unit>
+        <trans-unit id="invalid.username">
+            <source>invalid.username</source>
+            <target>Invalid username! (it can only contain letters and digits)</target>
+        </trans-unit>
+        <trans-unit id="user.must.have.user.role">
+            <source>user.must.have.user.role</source>
+            <target>Every user should have "User" role</target>
+        </trans-unit>
+        <trans-unit id="blank.detail">
+            <source>blank.detail</source>
+            <target>You can't add blank details</target>
+        </trans-unit>
+        <trans-unit id="long.detail">
+            <source>long.detail</source>
+            <target>Detail can't have more than 255 characters</target>
+        </trans-unit>
+        </body>
+    </file>
+</xliff>

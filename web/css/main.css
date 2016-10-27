@@ -1,0 +1,184 @@
+/* Base */
+body {
+    margin: 50px 5%;
+    margin-left: 300px;
+    font-family: Verdana;
+}
+table {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+table td, table th {
+    background: #ddd;
+    padding: 5px 10px;
+}
+table th {
+    background: #333;
+    color: #fff;
+}
+table tr:nth-child(even) > td {
+    background: #ccc;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul > li {
+    display: inline;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: #666;
+    padding: 5px 10px;
+    margin: 3px;
+    border-radius: 5px;
+}
+a:hover {
+    background: #999;
+    text-decoration: none;
+    color: #fff;
+}
+form label {
+    margin-right: 10px;
+}
+input, textarea {
+    font-family: Verdana;
+    margin: 3px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+input:focus,
+textarea:focus {
+    border: 1px solid #999;
+}
+/* Unactive elements */
+.unactive {
+    opacity: 0.5;
+}
+/* Links */
+.greenlink {
+    background: #44bb44;
+}
+.greenlink:hover {
+    background: #11bb11;
+}
+.redlink {
+    background: #ff6666;
+}
+.redlink:hover {
+    background: #ff3333;
+}
+/* Buttons */
+.success-button {
+    background: #55ee55;
+    color: #006600;
+    border-radius: 5px;
+    padding: 5px;
+    border: 0;
+}
+.success-button:hover {
+    background: #88ff88;
+}
+.danger-button {
+    background: #ee5555;
+    color: #660000;
+    border-radius: 5px;
+    padding: 5px;
+    border: 0;
+}
+.danger-button:hover {
+    background: #ff8888;
+}
+/* Form errors */
+.form-errors {
+    width: 600px;
+}
+.form-errors ul > li {
+    display: block;
+    background: #ff5555;
+    padding: 5px;
+    margin: 3px 0;
+    text-align: center;
+    color: #fff;
+}
+/* Flash messages */
+.flash-success {
+    background: #006600;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+}
+.flash-error {
+    background: #660000;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    margin: 5px 0;
+}
+/* Side menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left:0;
+    bottom: 0;
+    width: 240px;
+    background: #ddd;
+    padding: 10px;
+}
+.side-menu a {
+    display: block;
+    border-radius: 0;
+    margin: 3px 10px;
+    padding-left: 20px;
+}
+.side-menu h1,
+.side-menu h2 {
+    margin: 0;
+    padding: 5px;
+    padding-left: 10px;
+    background: #333;
+    color: #fff;
+}
+.side-menu h1 {
+    font-size: 24px;
+}
+.side-menu h2 {
+    font-size: 16px;
+    margin: 0 5px;
+}
+/* Main content */
+.main-content {
+    overflow: auto;
+}
+/* Contact list */
+table.show-table {
+    text-align: left;
+}
+table.show-table th {
+    width: 150px;
+}
+table.show-table td {
+    text-align: left;
+}
+ul.actions > li {
+    display: block;
+}
+/* Detail form */
+.detail .form-control,
+.role .form-control {
+    width: 200px;
+    display: inline;
+}
+.detail .form-group,
+.role .form-group {
+    display: inline;
+}
+.detail .checkbox {
+    display: inline;
+}

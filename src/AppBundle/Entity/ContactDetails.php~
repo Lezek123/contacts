@@ -1,0 +1,60 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ContactDetails
+ *
+ * @ORM\Table(name="contact_details", indexes={@ORM\Index(name="IX_contact_details_1", columns={"is_deleted"}), @ORM\Index(name="IX_contact_details_2", columns={"is_deleted", "value"}), @ORM\Index(name="FK_contact_details_1", columns={"contact_id"}), @ORM\Index(name="FK_contact_details_2", columns={"field_type_id"})})
+ * @ORM\Entity
+ */
+class ContactDetails
+{
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=false)
+     */
+    private $isDeleted = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     */
+    private $value;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\FieldTypes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FieldTypes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="field_type_id", referencedColumnName="id")
+     * })
+     */
+    private $fieldType;
+
+    /**
+     * @var \AppBundle\Entity\Contacts
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Contacts")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="contact_id", referencedColumnName="id")
+     * })
+     */
+    private $contact;
+
+
+}
+

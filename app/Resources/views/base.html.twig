@@ -1,0 +1,69 @@
+{% set debugMode = app.session.get('debug_mode') %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% stylesheets '@bootstrap_css' 'css/main.css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<navigation class="side-menu">
+    <h1>Menu</h1>
+    <ul>
+        <li><a href="{{ path('home') }}">{{ 'home'|trans }}</a></li>
+        <li><a href="{{ path('contact_index') }}">{{ 'contacts'|trans }}</a></li>
+    </ul>
+    <h2>{{ 'account'|trans }}</h2>
+    {% if app.user %}
+        <ul>
+            <li><a href="{{ logout_url('main') }}">{{ 'logout'|trans }}</a></li>
+        </ul>
+    {% else %}
+        <ul>
+            <li><a href="{{ path('login') }}">{{ 'login'|trans }}</a></li>
+            <li><a href="{{ path('register') }}">{{ 'register'|trans }}</a></li>
+        </ul>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <h2>{{ 'administration'|trans }}</h2>
+        <ul>
+            <li><a href="{{ path('user_index') }}">{{ 'users.manage'|trans }}</a></li>
+            <li>
+                <a href="{{ path('toggle_debug') }}" class="{{ app.session.get('debug_mode') ? 'greenlink' : 'redlink' }}">
+                    {{ app.session.get('debug_mode') ? 'debug.on'|trans : 'debug.off'|trans }}
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+    <h2>{{ 'languages'|trans }}</h2>
+    <ul>
+        {# Makes error pages with no _route display correctly #}
+        {% set params = app.request.get('_route_params') ? app.request.get('_route_params') : {} %}
+        {% set route = app.request.get('_route') ? app.request.get('_route') : 'home' %}
+        <li><a href="{{ path(route, params|merge({'_locale': 'pl'})) }}">{{ 'Polish'|trans }}</a></li>
+        <li><a href="{{ path(route, params|merge({'_locale': 'en'})) }}">{{ 'English'|trans }}</a></li>
+    </ul>
+</navigation>
+<div class="main-content">
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="flash-success">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% for flash_message in app.session.flashBag.get('error') %}
+        <div class="flash-error">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>
+{% javascripts '@jquery' '@bootstrap_js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends('base.html.twig') %}
+{%  block title %}{{ 'register'|trans }}{% endblock %}
+{% block body %}
+    <h1>{{ 'register'|trans }}</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="{{ 'register'|trans }}" class="success-button">
+    {{ form_end(form) }}
+{% endblock %}

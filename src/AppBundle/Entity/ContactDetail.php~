@@ -1,0 +1,383 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * ContactDetail
+ *
+ * @ORM\Table(name="contact_details", indexes={@ORM\Index(name="IX_contact_details_1", columns={"is_deleted"}), @ORM\Index(name="IX_contact_details_2", columns={"is_deleted", "value"}), @ORM\Index(name="FK_contact_details_1", columns={"contact_id"}), @ORM\Index(name="FK_contact_details_2", columns={"field_type_id"})})
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
+ */
+class ContactDetail
+{
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=false)
+     */
+    private $isDeleted = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
+     */
+    private $value;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\FieldType
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\FieldType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="field_type_id", referencedColumnName="id")
+     * })
+     * @Assert\Valid()
+     */
+    private $fieldType;
+
+    /**
+     * @var \AppBundle\Entity\Contact
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Contact")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="contact_id", referencedColumnName="id")
+     * })
+     */
+    private $contact;
+
+    /**
+     * @Assert\Email(groups={"edit", "new"})
+     */
+    private $email;
+    /**
+     * @Assert\Url(groups={"edit", "new"})
+     */
+    private $homepage_uri;
+    /**
+     * @Assert\Length(max=25, groups={"edit", "new"})
+     * @Assert\Regex("/(^[\+]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+$|^$)/", message="This is not a valid phone number")
+     */
+    private $mobile;
+    /**
+     * @Assert\Length(max=25, groups={"edit", "new"})
+     * @Assert\Regex("/(^[\+]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+[\- ]*[0-9]+$|^$)/", message="This is not a valid mobile phone number")
+     */
+    private $phone;
+    private $note;
+
+    /**
+     * @ORM\PrePersist
+     * @ORM\PostLoad
+     */
+    public function setValueAccordingly()
+    {
+        $type = $this->getType();
+        if (!$this->value) {
+            $this->value = $this->$type;
+        } elseif (!$this->$type) {
+            $this->$type = $this->value;
+        }
+    }
+
+    /**
+     * Get email
+     *
+     * @return string|null
+     */
+    public function getEmail()
+    {
+        if ($this->getType() == 'email') {
+            return $this->email;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set email
+     *
+     * @return ContactDetail
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        if (!$this->getType() == 'email') {
+            return $this;
+        }
+        $this->email = $email;
+        $this->value = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage uri
+     *
+     * @return string|null
+     */
+    public function getHomepageUri()
+    {
+        if ($this->getType() == 'homepage_uri') {
+            return $this->homepage_uri;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set homepage uri
+     *
+     * @return ContactDetail
+     * @param string $homepage_uri
+     */
+    public function setHomepageUri($homepage_uri)
+    {
+        if (!$this->getType() == 'homepage_uri') {
+            return $this;
+        }
+        $this->homepage_uri = $homepage_uri;
+        $this->value = $homepage_uri;
+
+        return $this;
+    }
+
+    /**
+     * Get mobile
+     *
+     * @return string|null
+     */
+    public function getMobile()
+    {
+        if ($this->getType() == 'mobile') {
+            return $this->mobile;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set mobile
+     *
+     * @return ContactDetail
+     * @param string $mobile
+     */
+    public function setMobile($mobile)
+    {
+        if (!$this->getType() == 'mobile') {
+            return $this;
+        }
+        $this->mobile = $mobile;
+        $this->value = $mobile;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string|null
+     */
+    public function getPhone()
+    {
+        if ($this->getType() == 'phone') {
+            return $this->phone;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set phone
+     *
+     * @return ContactDetail
+     * @param string $phone
+     */
+    public function setPhone($phone)
+    {
+        if (!$this->getType() == 'phone') {
+            return $this;
+        }
+        $this->phone = $phone;
+        $this->value = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string|null
+     */
+    public function getNote()
+    {
+        if ($this->getType() == 'note') {
+            return $this->note;
+        }
+
+        return null;
+    }
+
+    /**
+     * Set note
+     *
+     * @return ContactDetail
+     * @param string $note
+     */
+    public function setNote($note)
+    {
+        if (!$this->getType() == 'note') {
+            return $this;
+        }
+        $this->note = $note;
+        $this->value = $note;
+
+        return $this;
+    }
+
+    /**
+     * Set isDeleted
+     *
+     * @param boolean $isDeleted
+     *
+     * @return ContactDetail
+     */
+    public function setIsDeleted($isDeleted)
+    {
+        $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    /**
+     * Get isDeleted
+     *
+     * @return boolean
+     */
+    public function getIsDeleted()
+    {
+        return $this->isDeleted;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return ContactDetail
+     */
+    public function setValue($value)
+    {
+        $type = $this->getType();
+        $this->value = $this->$type = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string
+     * @Assert\Length(max=255, groups={"edit", "new"})
+     * @Assert\NotBlank(message = "Detail cannot be empty (just remove it)", groups={"edit", "new"})
+     */
+    public function getValue()
+    {
+        $type = $this->getType();
+        if (!$this->value) {
+            $this->value = $this->$type;
+        }
+
+        return $this->value;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fieldType
+     *
+     * @param \AppBundle\Entity\FieldType $fieldType
+     *
+     * @return ContactDetail
+     */
+    public function setFieldType(FieldType $fieldType = null)
+    {
+        $this->fieldType = $fieldType;
+
+        return $this;
+    }
+
+    /**
+     * Get fieldType
+     *
+     * @return \AppBundle\Entity\FieldType
+     */
+    public function getFieldType()
+    {
+        return $this->fieldType;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param \AppBundle\Entity\Contact $contact
+     *
+     * @return ContactDetail
+     */
+    public function setContact(Contact $contact = null)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return \AppBundle\Entity\Contact
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->getFieldType()->getFieldType();
+    }
+
+    /**
+     * @Assert\IsTrue(message = "This FieldType is not active anymore", groups={"edit", "new"})
+     * @return boolean
+     */
+    public function isFieldActive()
+    {
+        return $this->getFieldType()->getIsActive();
+    }
+}

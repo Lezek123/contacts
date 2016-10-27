@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+        <!-- Komunikaty -->
+        <trans-unit id="invalid.password">
+            <source>invalid.password</source>
+            <target>Niepoprawne hasło! (powinno mieć przynajmniej jedną dużą literę, małą literę, liczbę i znak)</target>
+        </trans-unit>
+        <trans-unit id="invalid.username">
+            <source>invalid.username</source>
+            <target>Niewłaściwa nazwa użytkowika! (może zawierać tylko litery i cyfry)</target>
+        </trans-unit>
+        <trans-unit id="user.must.have.user.role">
+            <source>user.must.have.user.role</source>
+            <target>Każdy użytkownik powinien posiadać rolę "Użytkownik"</target>
+        </trans-unit>
+        <trans-unit id="blank.detail">
+            <source>blank.detail</source>
+            <target>Nie możesz dodawać pustych detali</target>
+        </trans-unit>
+        <trans-unit id="long.detail">
+            <source>long.detail</source>
+            <target>Detal może mieć maksymalnie 255 znaków</target>
+        </trans-unit>
+        </body>
+    </file>
+</xliff>

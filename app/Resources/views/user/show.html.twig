@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'user.show.title'|trans }} - {{ user.username }}{% endblock %}
+{% block body %}
+    <h1>{{ 'user.show.title'|trans }}</h1>
+
+    <table class="show-table">
+        <tbody>
+        <tr>
+            <th>{{ 'username'|trans }}</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>E-mail</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="actions">
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">{{ 'edit'|trans }}</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            {{ form_widget(delete_form) }}
+            <input type="submit" value="{{ 'delete'|trans }}" class="danger-button" id="delete-button">
+            {{ form_end(delete_form) }}
+        </li>
+        <li>
+            <a href="{{ path('user_index') }}">{{ 'back.to.list'|trans }}</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(function () {
+            $('#delete-button').click(function (e) {
+                if (confirm('{{ 'delete.confirm.message'|trans }}') == true) {
+                    $('#user_deleteConfirm').val(true);
+                } else {
+                    e.preventDefault();
+                }
+            })
+        });
+    </script>
+{% endblock %}

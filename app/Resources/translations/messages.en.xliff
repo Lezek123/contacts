@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+        <!-- Landing page -->
+        <trans-unit id="landing.page">
+            <source>landing.page</source>
+            <target>Landing page</target>
+        </trans-unit>
+        <trans-unit id="home">
+            <source>home</source>
+            <target>Home</target>
+        </trans-unit>
+        <!-- Contacts -->
+        <trans-unit id="contacts">
+            <source>contacts</source>
+            <target>Contacts</target>
+        </trans-unit>
+        <trans-unit id="contacts.list">
+            <source>contacts.list</source>
+            <target>Contacts list</target>
+        </trans-unit>
+        <!-- Contact titles -->
+        <trans-unit id="contact.show.title">
+            <source>contact.show.title</source>
+            <target>Show contact</target>
+        </trans-unit>
+        <trans-unit id="contact.edit.title">
+            <source>contact.edit.title</source>
+            <target>Edit contact</target>
+        </trans-unit>
+        <trans-unit id="contact.create.title">
+            <source>contact.create.title</source>
+            <target>Create contact</target>
+        </trans-unit>
+        <!-- Contact messages -->
+        <trans-unit id="contact.deleted">
+            <source>%contact_name%.deleted</source>
+            <target>Contact %contact_name% was successfully deleted!</target>
+        </trans-unit>
+        <trans-unit id="contact.added">
+            <source>%contact_name%.added</source>
+            <target>Contact %contact_name% was successfully added!</target>
+        </trans-unit>
+        <trans-unit id="changes.saved">
+            <source>changes.saved</source>
+            <target>Changes were saved!</target>
+        </trans-unit>
+        <trans-unit id="contact.save.failed">
+            <source>contact.save.failed</source>
+            <target>Couldn't save contact</target>
+        </trans-unit>
+        <trans-unit id="contact.add.failed">
+            <source>contact.add.failed</source>
+            <target>Couldn't add contact</target>
+        </trans-unit>
+        <trans-unit id="contact.delete.failed">
+            <source>contact.delete.failed</source>
+            <target>Couldn't delete contact</target>
+        </trans-unit>
+        <trans-unit id="contacts.get.failed">
+            <source>contacts.get.failed</source>
+            <target>Couldn't get contacts</target>
+        </trans-unit>
+        <!-- Actions -->
+        <trans-unit id="actions">
+            <source>actions</source>
+            <target>Actions</target>
+        </trans-unit>
+        <trans-unit id="show">
+            <source>show</source>
+            <target>Show</target>
+        </trans-unit>
+        <trans-unit id="edit">
+            <source>edit</source>
+            <target>Edit</target>
+        </trans-unit>
+        <trans-unit id="delete">
+            <source>delete</source>
+            <target>Delete</target>
+        </trans-unit>
+        <trans-unit id="save">
+            <source>save</source>
+            <target>Save</target>
+        </trans-unit>
+        <trans-unit id="create">
+            <source>create</source>
+            <target>Create</target>
+        </trans-unit>
+        <trans-unit id="create.entry">
+            <source>create.entry</source>
+            <target>Create a new entry</target>
+        </trans-unit>
+        <trans-unit id="add.detail">
+            <source>add.detail</source>
+            <target>Add detail</target>
+        </trans-unit>
+        <trans-unit id="remove.detail">
+            <source>remove.detail</source>
+            <target>Remove detail</target>
+        </trans-unit>
+        <trans-unit id="back.to.list">
+            <source>back.to.list</source>
+            <target>Back to the list</target>
+        </trans-unit>
+        <trans-unit id="delete.confirm.message">
+            <source>delete.confirm.message</source>
+            <target>Are you sure you want to delete this object?</target>
+        </trans-unit>
+        <!-- Form fields -->
+        <trans-unit id="details">
+            <source>details</source>
+            <target>Details</target>
+        </trans-unit>
+        <!-- Users -->
+        <trans-unit id="login">
+            <source>login</source>
+            <target>Log in</target>
+        </trans-unit>
+        <trans-unit id="logout">
+            <source>logout</source>
+            <target>Log out</target>
+        </trans-unit>
+        <trans-unit id="register">
+            <source>register</source>
+            <target>Register</target>
+        </trans-unit>
+        <trans-unit id="username">
+            <source>username</source>
+            <target>Username</target>
+        </trans-unit>
+        <trans-unit id="password">
+            <source>password</source>
+            <target>Password</target>
+        </trans-unit>
+        <trans-unit id="password.repeat">
+            <source>password.repeat</source>
+            <target>Repeat Password:</target>
+        </trans-unit>
+        <trans-unit id="register.success">
+            <source>register.success</source>
+            <target>Registration successfull</target>
+        </trans-unit>
+        <trans-unit id="register.failed">
+            <source>register.failed</source>
+            <target>Registration failed</target>
+        </trans-unit>
+        <trans-unit id="users.manage">
+            <source>users.manage</source>
+            <target>Manage users</target>
+        </trans-unit>
+        <trans-unit id="users.list">
+            <source>users.list</source>
+            <target>Users list</target>
+        </trans-unit>
+        <trans-unit id="user.show.title">
+            <source>user.show.title</source>
+            <target>Show user</target>
+        </trans-unit>
+        <trans-unit id="remove.role">
+            <source>remove.role</source>
+            <target>Remove role</target>
+        </trans-unit>
+        <trans-unit id="add.role">
+            <source>add.role</source>
+            <target>Add role</target>
+        </trans-unit>
+        <trans-unit id="user.edit.title">
+            <source>user.edit.title</source>
+            <target>Edit user</target>
+        </trans-unit>
+        <trans-unit id="roles">
+            <source>roles</source>
+            <target>Roles</target>
+        </trans-unit>
+        <trans-unit id="user">
+            <source>user</source>
+            <target>User</target>
+        </trans-unit>
+        <trans-unit id="admin">
+            <source>admin</source>
+            <target>Admin</target>
+        </trans-unit>
+        <!-- Debug -->
+        <trans-unit id="debug.on">
+            <source>debug.on</source>
+            <target>Debug mode: on</target>
+        </trans-unit>
+        <trans-unit id="debug.off">
+            <source>debug.off</source>
+            <target>Debug mode: off</target>
+        </trans-unit>
+        <trans-unit id="deleted">
+            <source>deleted</source>
+            <target>Deleted</target>
+        </trans-unit>
+        <trans-unit id="permanent.delete">
+            <source>permanent.delete</source>
+            <target>Permanent delete</target>
+        </trans-unit>
+        <!-- Menu -->
+        <trans-unit id="account">
+            <source>account</source>
+            <target>Account</target>
+        </trans-unit>
+        <trans-unit id="languages">
+            <source>languages</source>
+            <target>Languages</target>
+        </trans-unit>
+        <trans-unit id="administration">
+            <source>administration</source>
+            <target>Administration</target>
+        </trans-unit>
+        <!-- Errors -->
+        <!-- Access denied -->
+        <trans-unit id="access.denied">
+            <source>access.denied</source>
+            <target>Access denied</target>
+        </trans-unit>
+        <trans-unit id="access.denied.message">
+            <source>access.denied.message</source>
+            <target>You do not have the privileges to view this page.</target>
+        </trans-unit>
+        <!-- Page not found -->
+        <trans-unit id="not.found">
+            <source>not.found</source>
+            <target>Page not found</target>
+        </trans-unit>
+        <trans-unit id="not.found.message">
+            <source>not.found.message</source>
+            <target>Couldn't find any page assigned to the provided URL address.</target>
+        </trans-unit>
+        <!-- Server error -->
+        <trans-unit id="server.error">
+            <source>server.error</source>
+            <target>Server error</target>
+        </trans-unit>
+        <trans-unit id="server.error.message">
+            <source>server.error.message</source>
+            <target>There was an error on our server. Try again later or contact us if the problem persists.</target>
+        </trans-unit>
+        <!-- Back to home -->
+        <trans-unit id="back.to.home">
+            <source>back.to.home</source>
+            <target>Back to homepage</target>
+        </trans-unit>
+        </body>
+    </file>
+</xliff>

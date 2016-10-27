@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'contacts.list'|trans }}{% endblock %}
+{% block body %}
+    <h1>{{ 'contacts.list'|trans }}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{{ 'Firstname'|trans }}</th>
+                <th>{{ 'Lastname'|trans }}</th>
+                <th>{{ 'actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr {{ contact.isDeleted ? 'class="unactive"' : '' }}>
+                <td>{{ contact.firstname }}</td>
+                <td>{{ contact.lastname }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contact_show', { 'id': contact.id }) }}">{{ 'show'|trans }}</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('contact_edit', { 'id': contact.id }) }}">{{ 'edit'|trans }}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {{ include('pagination.html.twig', { 'routeName': 'contact_index'}) }}
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <ul>
+        <li>
+            <a href="{{ path('contact_new') }}" class="success-button">{{ 'create.entry'|trans }}</a>
+        </li>
+    </ul>
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
